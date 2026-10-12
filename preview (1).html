@@ -1,0 +1,721 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NOIR Auto Studio - Profesyonel araç bakım ve detaylandırma hizmetleri.">
+  <title>NOIR AUTO STUDIO | Detayda Fark</title>
+
+  <style>
+    :root {
+      --bg: #0b0c0e;
+      --card: #15171a;
+      --text: #f5f5f2;
+      --muted: #a5a7aa;
+      --accent: #c8ff3d;
+      --border: #292c30;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: auto;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      background: #0b0c0e;
+    }
+
+    nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 21px;
+      font-weight: 900;
+      letter-spacing: 3px;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .logo small {
+      display: block;
+      font-size: 9px;
+      letter-spacing: 5px;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      font-size: 13px;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .button {
+      display: inline-block;
+      background: var(--accent);
+      color: #101108;
+      padding: 13px 20px;
+      font-weight: bold;
+      font-size: 12px;
+      border: 0;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .button:hover {
+      background: white;
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      min-height: 580px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 80% 40%,
+          rgba(200,255,61,.13), transparent 38%),
+        linear-gradient(120deg, #0b0c0e, #15191b);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 90px 0;
+      max-width: 720px;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(48px, 8vw, 90px);
+      line-height: 0.98;
+      letter-spacing: -4px;
+      margin: 24px 0;
+    }
+
+    h1 span {
+      color: var(--accent);
+    }
+
+    .hero p {
+      max-width: 490px;
+      color: #b8bbc0;
+      margin-bottom: 30px;
+      font-size: 16px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button-outline {
+      display: inline-block;
+      border: 1px solid #55585c;
+      padding: 12px 20px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .button-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .hero-car {
+      position: absolute;
+      width: 42%;
+      height: 190px;
+      right: 2%;
+      bottom: 21%;
+      opacity: 0.8;
+    }
+
+    .car-body {
+      position: absolute;
+      width: 100%;
+      height: 95px;
+      bottom: 25px;
+      background: linear-gradient(160deg, #626970, #171a1e 60%, #3c4147);
+      clip-path: polygon(5% 55%, 18% 35%, 32% 5%, 68% 5%, 83% 36%, 98% 53%, 100% 85%, 0 85%);
+      border-bottom: 3px solid var(--accent);
+    }
+
+    .car-window {
+      position: absolute;
+      width: 43%;
+      height: 55px;
+      right: 25%;
+      bottom: 105px;
+      background: linear-gradient(135deg, #75828a, #101317);
+      clip-path: polygon(20% 0, 80% 0, 100% 100%, 0 100%);
+    }
+
+    .wheel {
+      position: absolute;
+      bottom: 0;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #8b9298 0 15%, #181a1d 17% 43%, #555b61 45% 50%, #08090a 53%);
+      border: 3px solid #5a5f64;
+    }
+
+    .wheel-left { left: 17%; }
+    .wheel-right { right: 12%; }
+
+    .stats {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 25px 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--accent);
+      font-size: 22px;
+    }
+
+    .stat span {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    section {
+      padding: 85px 0;
+    }
+
+    .section-heading {
+      margin-bottom: 35px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(32px, 5vw, 50px);
+      line-height: 1.1;
+      margin-top: 12px;
+      letter-spacing: -2px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      margin-top: 12px;
+      max-width: 500px;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .service {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 28px;
+      transition: 0.2s;
+    }
+
+    .service:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+
+    .service-number {
+      color: var(--accent);
+      font-size: 12px;
+      letter-spacing: 2px;
+    }
+
+    .service-icon {
+      font-size: 32px;
+      margin: 25px 0 12px;
+    }
+
+    .service h3 {
+      font-size: 21px;
+      margin-bottom: 10px;
+    }
+
+    .service p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .service a {
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .about {
+      background: #111316;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .about-visual {
+      min-height: 320px;
+      background:
+        radial-gradient(circle, rgba(200,255,61,.15), transparent 60%),
+        #171a1e;
+      border: 1px solid var(--border);
+      display: grid;
+      place-items: center;
+      text-align: center;
+    }
+
+    .about-visual strong {
+      display: block;
+      font-size: 100px;
+      line-height: 1;
+    }
+
+    .about-visual span {
+      color: var(--accent);
+      letter-spacing: 4px;
+      font-size: 11px;
+    }
+
+    .about-text h2 {
+      font-size: clamp(32px, 5vw, 47px);
+      line-height: 1.08;
+      margin: 15px 0;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      margin-bottom: 18px;
+      font-size: 14px;
+    }
+
+    .benefits {
+      list-style: none;
+      margin: 24px 0;
+    }
+
+    .benefits li {
+      margin: 9px 0;
+      font-size: 13px;
+    }
+
+    .benefits li::before {
+      content: "✓";
+      color: var(--accent);
+      margin-right: 10px;
+      font-weight: bold;
+    }
+
+    .contact {
+      background: var(--accent);
+      color: #11130c;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 45px;
+    }
+
+    .contact .eyebrow {
+      color: #343c20;
+    }
+
+    .contact h2 {
+      font-size: clamp(38px, 6vw, 60px);
+      line-height: 1;
+      margin: 18px 0;
+      letter-spacing: -3px;
+    }
+
+    .contact-copy p {
+      max-width: 350px;
+      font-size: 14px;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 13px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid rgba(0,0,0,.2);
+      background: rgba(255,255,255,.65);
+      color: #111;
+      font: inherit;
+      font-size: 13px;
+      border-radius: 0;
+    }
+
+    textarea {
+      min-height: 85px;
+      resize: vertical;
+    }
+
+    .submit {
+      grid-column: 1 / -1;
+      background: #11130c;
+      color: white;
+      border: 0;
+      padding: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .submit:hover {
+      background: #303622;
+    }
+
+    .notice {
+      display: none;
+      margin-top: 12px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    footer {
+      padding: 25px 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 800px) {
+      .hero-car {
+        width: 70%;
+        right: -10%;
+        bottom: 8%;
+        opacity: 0.35;
+      }
+
+      .hero-content {
+        padding: 75px 0 220px;
+      }
+
+      .services {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .about-grid, .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+    }
+
+    @media (max-width: 540px) {
+      nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 18px 0;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+
+      h1 {
+        letter-spacing: -2px;
+      }
+
+      .services {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        gap: 8px;
+      }
+
+      .stat strong {
+        font-size: 18px;
+      }
+
+      .stat span {
+        font-size: 10px;
+      }
+
+      form {
+        grid-template-columns: 1fr;
+      }
+
+      .full, .submit {
+        grid-column: auto;
+      }
+
+      section {
+        padding: 65px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="container">
+      <a class="logo" href="#home">NOIR<span>.</span><small>AUTO STUDIO</small></a>
+
+      <div class="nav-links">
+        <a href="#services">Hizmetler</a>
+        <a href="#about">Hakkımızda</a>
+        <a href="#contact">İletişim</a>
+        <a class="button" href="#contact">RANDEVU AL ↗</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-content">
+          <div class="eyebrow">Otomobil bakımında yeni standart</div>
+          <h1>DETAYDA<br><span>FARK.</span></h1>
+          <p>
+            Otomobiline hak ettiği özeni göster.
+            Profesyonel detaylı temizlik ve boya koruma
+            yaklaşımıyla her ayrıntıda fark yarat.
+          </p>
+          <div class="hero-buttons">
+            <a class="button" href="#services">HİZMETLERİ KEŞFET ↗</a>
+            <a class="button-outline" href="#contact">BİZE ULAŞ</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-car" aria-hidden="true">
+        <div class="car-body"></div>
+        <div class="car-window"></div>
+        <div class="wheel wheel-left"></div>
+        <div class="wheel wheel-right"></div>
+      </div>
+    </section>
+
+    <div class="container stats">
+      <div class="stat"><strong>01</strong><span>Özenli uygulama</span></div>
+      <div class="stat"><strong>02</strong><span>Aracına özel yaklaşım</span></div>
+      <div class="stat"><strong>03</strong><span>Detay odaklı bakım</span></div>
+    </div>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Hizmetlerimiz</div>
+          <h2>BAKIMIN İYİ HALİ.</h2>
+          <p>Aracının ihtiyaçlarına uygun bakım seçeneğini birlikte belirleyelim.</p>
+        </div>
+
+        <div class="services">
+          <article class="service">
+            <div class="service-number">01 / KORUMA</div>
+            <div class="service-icon">✳</div>
+            <h3>Boya Koruma</h3>
+            <p>Aracının dış yüzeyini korumaya ve parlak görünümünü desteklemeye yönelik uygulamalar.</p>
+            <a href="#contact">BİLGİ AL ↗</a>
+          </article>
+
+          <article class="service">
+            <div class="service-number">02 / TEMİZLİK</div>
+            <div class="service-icon">◈</div>
+            <h3>Detaylı İç Temizlik</h3>
+            <p>Kabin, koltuklar ve ulaşılması zor alanlar için özenli iç temizlik hizmeti.</p>
+            <a href="#contact">BİLGİ AL ↗</a>
+          </article>
+
+          <article class="service">
+            <div class="service-number">03 / YENİLEME</div>
+            <div class="service-icon">✧</div>
+            <h3>İç ve Dış Bakım</h3>
+            <p>Aracının genel görünümünü tazelemeye yönelik kapsamlı bakım seçenekleri.</p>
+            <a href="#contact">BİLGİ AL ↗</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="container about-grid">
+        <div class="about-visual">
+          <div>
+            <strong>N<span style="color:var(--accent)">.</span></strong>
+            <span>DETAIL IS EVERYTHING</span>
+          </div>
+        </div>
+
+        <div class="about-text">
+          <div class="eyebrow">NOIR yaklaşımı</div>
+          <h2>HER DETAYIN<br>BİR SEBEBİ VAR.</h2>
+          <p>
+            İyi araç bakımı yalnızca temizlikten ibaret değildir.
+            Doğru uygulama, dikkatli çalışma ve ihtiyaca uygun
+            bir planlama ile başlar.
+          </p>
+          <p>
+            NOIR Auto Studio, profesyonel araç bakım hizmetleri
+            için hazırlanmış örnek bir işletme web sitesi konseptidir.
+          </p>
+          <ul class="benefits">
+            <li>İhtiyaca özel yaklaşım</li>
+            <li>Açık hizmet seçenekleri</li>
+            <li>Detay odaklı çalışma</li>
+            <li>Özenli teslim süreci</li>
+          </ul>
+          <a class="button" href="#contact">BİZİMLE GÖRÜŞ ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container contact-grid">
+        <div class="contact-copy">
+          <div class="eyebrow">İlk adımı at</div>
+          <h2>ARACIN<br>HAZIR MI?</h2>
+          <p>
+            İlgilendiğin hizmeti seç ve bilgilerini doldur.
+            Bu demo form yalnızca örnek olarak çalışır;
+            gerçek mesaj gönderimi için ayrıca bağlanması gerekir.
+          </p>
+        </div>
+
+        <div>
+          <form id="contactForm">
+            <div class="field">
+              <label for="name">ADIN</label>
+              <input id="name" name="name" placeholder="Adın soyadın" required>
+            </div>
+
+            <div class="field">
+              <label for="phone">TELEFON</label>
+              <input id="phone" name="phone" type="tel" placeholder="Telefon numaran" required>
+            </div>
+
+            <div class="field">
+              <label for="car">ARAÇ</label>
+              <input id="car" name="car" placeholder="Marka ve model">
+            </div>
+
+            <div class="field">
+              <label for="service">HİZMET</label>
+              <select id="service" name="service">
+                <option>Boya koruma</option>
+                <option>Detaylı iç temizlik</option>
+                <option>İç ve dış bakım</option>
+                <option>Bilgi almak istiyorum</option>
+              </select>
+            </div>
+
+            <div class="field full">
+              <label for="message">MESAJIN</label>
+              <textarea id="message" name="message" placeholder="İhtiyacını kısaca anlat..."></textarea>
+            </div>
+
+            <button class="submit" type="submit">FORMU KONTROL ET ↗</button>
+          </form>
+
+          <p class="notice" id="notice" role="status">
+            Demo form çalışıyor. Bilgiler herhangi bir yere gönderilmedi.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <a class="logo" href="#home">NOIR<span>.</span><small>AUTO STUDIO</small></a>
+      <p>© <span id="year"></span> NOIR Auto Studio · Demo web sitesi</p>
+      <a href="#home">Yukarı çık ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    document.getElementById("contactForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      document.getElementById("notice").style.display = "block";
+    });
+  </script>
+</body>
+</html>
