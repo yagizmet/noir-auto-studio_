@@ -4,17 +4,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="NOIR Auto Studio - Profesyonel araç bakım ve detaylandırma hizmetleri.">
-  <title>NOIR AUTO STUDIO | Detayda Fark</title>
+
+  <title>NOIR AUTO STUDIO | Premium Araç Bakım & Detailing</title>
+  <meta name="description" content="NOIR AUTO STUDIO ile aracınıza profesyonel detailing, iç ve dış temizlik, boya düzeltme ve boya koruma uygulamaları. Size özel teklif alın.">
+  <meta name="theme-color" content="#10110f">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:title" content="NOIR AUTO STUDIO — Detailing, Redefined">
+  <meta property="og:description" content="Aracınızın karakterini ortaya çıkaran premium bakım deneyimi.">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #0b0c0e;
-      --card: #15171a;
-      --text: #f5f5f2;
-      --muted: #a5a7aa;
-      --accent: #c8ff3d;
-      --border: #292c30;
+      --bg: #10110f;
+      --bg-soft: #171815;
+      --panel: #1d1e1a;
+      --text: #f3f3ed;
+      --muted: #a4a69d;
+      --line: rgba(255,255,255,.11);
+      --accent: #c7f36b;
+      --accent-dark: #a9d64e;
+      --radius: 18px;
+      --container: 1180px;
+      --transition: 240ms ease;
     }
 
     * {
@@ -25,13 +43,19 @@
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 88px;
     }
 
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: "DM Sans", sans-serif;
       line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body.menu-open {
+      overflow: hidden;
     }
 
     a {
@@ -39,682 +63,1741 @@
       text-decoration: none;
     }
 
+    button, input, select, textarea {
+      font: inherit;
+    }
+
+    button, a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: #10110f;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+    }
+
     .container {
-      width: min(1120px, 90%);
-      margin: auto;
+      width: min(var(--container), calc(100% - 48px));
+      margin-inline: auto;
     }
 
-    header {
-      border-bottom: 1px solid var(--border);
-      background: #0b0c0e;
+    .section {
+      padding: 110px 0;
     }
 
-    nav {
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--accent);
+      font-size: .74rem;
+      font-weight: 700;
+      letter-spacing: .17em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 24px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    h1, h2, h3, .display {
+      font-family: "Barlow Condensed", sans-serif;
+      text-transform: uppercase;
+      line-height: .98;
+      letter-spacing: -.025em;
+    }
+
+    h1 {
+      font-size: clamp(3.7rem, 8.6vw, 7.7rem);
+      font-weight: 800;
+    }
+
+    h2 {
+      font-size: clamp(2.7rem, 5.4vw, 5rem);
+      font-weight: 700;
+    }
+
+    h3 {
+      font-size: 1.8rem;
+      font-weight: 600;
+    }
+
+    .accent {
+      color: var(--accent);
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 32px;
+      margin-bottom: 48px;
+    }
+
+    .section-heading h2 {
+      max-width: 700px;
+      margin-top: 16px;
+    }
+
+    .section-heading > p {
+      max-width: 340px;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      min-height: 52px;
+      padding: 0 23px;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      font-size: .85rem;
+      font-weight: 700;
+      transition:
+        background var(--transition),
+        color var(--transition),
+        border-color var(--transition),
+        transform var(--transition);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      color: #10110f;
+      background: var(--accent);
+    }
+
+    .btn-primary:hover {
+      background: #dcffa0;
+    }
+
+    .btn-outline {
+      color: var(--text);
+      border-color: rgba(255,255,255,.35);
+      background: rgba(255,255,255,.025);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .btn-arrow {
+      font-size: 1.1rem;
+      transition: transform var(--transition);
+    }
+
+    .btn:hover .btn-arrow {
+      transform: translateX(4px);
+    }
+
+    /* HEADER */
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(16,17,15,.9);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav {
       min-height: 78px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
+      gap: 28px;
     }
 
     .logo {
-      font-size: 21px;
-      font-weight: 900;
-      letter-spacing: 3px;
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+      flex-shrink: 0;
     }
 
-    .logo span {
-      color: var(--accent);
+    .logo strong {
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 1.8rem;
+      letter-spacing: .08em;
+      font-weight: 800;
     }
 
     .logo small {
-      display: block;
-      font-size: 9px;
-      letter-spacing: 5px;
-      color: var(--muted);
+      margin-top: 6px;
+      font-size: .55rem;
+      color: var(--accent);
+      letter-spacing: .28em;
+      font-weight: 700;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 25px;
-      font-size: 13px;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #d0d1ca;
+      font-size: .8rem;
+      transition: color var(--transition);
     }
 
     .nav-links a:hover {
       color: var(--accent);
     }
 
-    .button {
-      display: inline-block;
-      background: var(--accent);
-      color: #101108;
-      padding: 13px 20px;
-      font-weight: bold;
-      font-size: 12px;
-      border: 0;
-      cursor: pointer;
-      transition: 0.2s;
+    .nav-cta {
+      min-height: 43px;
+      padding-inline: 17px;
+      font-size: .78rem;
     }
 
-    .button:hover {
-      background: white;
-      transform: translateY(-2px);
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      background: transparent;
+      border: 1px solid var(--line);
+      color: var(--text);
+      border-radius: 4px;
+      font-size: 1.35rem;
     }
+
+    /* HERO */
 
     .hero {
-      min-height: 580px;
+      position: relative;
+      min-height: min(790px, calc(100svh - 78px));
       display: flex;
       align-items: center;
-      position: relative;
       overflow: hidden;
+      isolation: isolate;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
       background:
-        radial-gradient(ellipse at 80% 40%,
-          rgba(200,255,61,.13), transparent 38%),
-        linear-gradient(120deg, #0b0c0e, #15191b);
+        url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=2200&q=85")
+        center 57% / cover no-repeat;
+      animation: heroZoom 16s ease-out both;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(90deg, rgba(10,11,9,.96) 0%, rgba(10,11,9,.77) 44%, rgba(10,11,9,.17) 100%),
+        linear-gradient(0deg, rgba(10,11,9,.78), transparent 42%);
     }
 
     .hero-content {
-      position: relative;
-      z-index: 1;
-      padding: 90px 0;
-      max-width: 720px;
+      max-width: 820px;
+      padding: 105px 0 115px;
+      animation: fadeUp .8s .1s both;
     }
 
-    .eyebrow {
-      color: var(--accent);
-      font-size: 11px;
-      font-weight: bold;
-      letter-spacing: 3px;
+    .hero h1 {
+      margin: 25px 0;
+    }
+
+    .hero h1 span {
+      display: block;
+    }
+
+    .hero-copy {
+      max-width: 475px;
+      margin-bottom: 32px;
+      color: #d0d1ca;
+      font-size: 1rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+    }
+
+    .hero-bottom {
+      position: absolute;
+      bottom: 26px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      color: rgba(255,255,255,.7);
+      font-size: .7rem;
+      letter-spacing: .1em;
       text-transform: uppercase;
     }
 
-    h1 {
-      font-size: clamp(48px, 8vw, 90px);
-      line-height: 0.98;
-      letter-spacing: -4px;
-      margin: 24px 0;
-    }
-
-    h1 span {
-      color: var(--accent);
-    }
-
-    .hero p {
-      max-width: 490px;
-      color: #b8bbc0;
-      margin-bottom: 30px;
-      font-size: 16px;
-    }
-
-    .hero-buttons {
+    .hero-bottom span {
       display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
+      align-items: center;
+      gap: 9px;
     }
 
-    .button-outline {
-      display: inline-block;
-      border: 1px solid #55585c;
-      padding: 12px 20px;
-      font-size: 12px;
-      font-weight: bold;
-    }
-
-    .button-outline:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    .hero-car {
-      position: absolute;
-      width: 42%;
-      height: 190px;
-      right: 2%;
-      bottom: 21%;
-      opacity: 0.8;
-    }
-
-    .car-body {
-      position: absolute;
-      width: 100%;
-      height: 95px;
-      bottom: 25px;
-      background: linear-gradient(160deg, #626970, #171a1e 60%, #3c4147);
-      clip-path: polygon(5% 55%, 18% 35%, 32% 5%, 68% 5%, 83% 36%, 98% 53%, 100% 85%, 0 85%);
-      border-bottom: 3px solid var(--accent);
-    }
-
-    .car-window {
-      position: absolute;
-      width: 43%;
-      height: 55px;
-      right: 25%;
-      bottom: 105px;
-      background: linear-gradient(135deg, #75828a, #101317);
-      clip-path: polygon(20% 0, 80% 0, 100% 100%, 0 100%);
-    }
-
-    .wheel {
-      position: absolute;
-      bottom: 0;
-      width: 60px;
-      height: 60px;
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--accent);
       border-radius: 50%;
-      background: radial-gradient(circle, #8b9298 0 15%, #181a1d 17% 43%, #555b61 45% 50%, #08090a 53%);
-      border: 3px solid #5a5f64;
+      box-shadow: 0 0 12px rgba(199,243,107,.6);
     }
 
-    .wheel-left { left: 17%; }
-    .wheel-right { right: 12%; }
+    /* INTRO STRIP */
 
-    .stats {
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 25px 0;
+    .intro-strip {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      border-bottom: 1px solid var(--line);
     }
 
-    .stat {
+    .intro-item {
+      padding: 30px 26px;
       text-align: center;
+      border-right: 1px solid var(--line);
     }
 
-    .stat strong {
+    .intro-item:last-child {
+      border-right: 0;
+    }
+
+    .intro-item strong {
       display: block;
-      color: var(--accent);
-      font-size: 22px;
+      margin-bottom: 6px;
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: .04em;
     }
 
-    .stat span {
-      font-size: 12px;
+    .intro-item span {
       color: var(--muted);
+      font-size: .78rem;
     }
 
-    section {
-      padding: 85px 0;
-    }
+    /* SERVICES */
 
-    .section-heading {
-      margin-bottom: 35px;
-    }
-
-    .section-heading h2 {
-      font-size: clamp(32px, 5vw, 50px);
-      line-height: 1.1;
-      margin-top: 12px;
-      letter-spacing: -2px;
-    }
-
-    .section-heading p {
-      color: var(--muted);
-      margin-top: 12px;
-      max-width: 500px;
-    }
-
-    .services {
+    .services-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
+      gap: 18px;
     }
 
-    .service {
-      background: var(--card);
-      border: 1px solid var(--border);
+    .service-card {
+      position: relative;
+      min-height: 365px;
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
       padding: 28px;
-      transition: 0.2s;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      isolation: isolate;
     }
 
-    .service:hover {
-      border-color: var(--accent);
-      transform: translateY(-4px);
+    .service-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background-image: var(--service-image);
+      background-size: cover;
+      background-position: center;
+      transition: transform 600ms ease;
+    }
+
+    .service-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(0deg, rgba(8,9,8,.98), rgba(8,9,8,.48) 48%, rgba(8,9,8,.05));
+    }
+
+    .service-card:hover::before {
+      transform: scale(1.06);
     }
 
     .service-number {
+      position: absolute;
+      top: 22px;
+      left: 24px;
       color: var(--accent);
-      font-size: 12px;
-      letter-spacing: 2px;
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 1.2rem;
     }
 
-    .service-icon {
-      font-size: 32px;
-      margin: 25px 0 12px;
+    .service-card h3 {
+      margin-bottom: 12px;
     }
 
-    .service h3 {
-      font-size: 21px;
-      margin-bottom: 10px;
+    .service-card p {
+      max-width: 330px;
+      color: #c0c1b9;
+      font-size: .86rem;
     }
 
-    .service p {
-      color: var(--muted);
-      font-size: 14px;
-      margin-bottom: 20px;
-    }
-
-    .service a {
+    .service-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 22px;
       color: var(--accent);
-      font-size: 12px;
-      font-weight: bold;
+      font-size: .8rem;
+      font-weight: 700;
     }
 
-    .about {
-      background: #111316;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+    /* PHILOSOPHY */
+
+    .philosophy {
+      background: var(--bg-soft);
+      border-block: 1px solid var(--line);
     }
 
-    .about-grid {
+    .philosophy-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 55px;
+      gap: 75px;
       align-items: center;
     }
 
-    .about-visual {
-      min-height: 320px;
-      background:
-        radial-gradient(circle, rgba(200,255,61,.15), transparent 60%),
-        #171a1e;
-      border: 1px solid var(--border);
-      display: grid;
-      place-items: center;
-      text-align: center;
+    .philosophy-image {
+      position: relative;
+      min-height: 540px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: #222;
     }
 
-    .about-visual strong {
-      display: block;
-      font-size: 100px;
-      line-height: 1;
+    .philosophy-image img {
+      position: absolute;
+      inset: 0;
+      height: 100%;
+      transition: transform 600ms ease;
     }
 
-    .about-visual span {
-      color: var(--accent);
-      letter-spacing: 4px;
-      font-size: 11px;
+    .philosophy-image:hover img {
+      transform: scale(1.035);
     }
 
-    .about-text h2 {
-      font-size: clamp(32px, 5vw, 47px);
-      line-height: 1.08;
-      margin: 15px 0;
+    .image-caption {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      padding: 12px 16px;
+      background: rgba(16,17,15,.85);
+      border: 1px solid var(--line);
+      font-size: .75rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
     }
 
-    .about-text p {
+    .philosophy-copy h2 {
+      margin: 18px 0 25px;
+    }
+
+    .philosophy-copy > p {
       color: var(--muted);
-      margin-bottom: 18px;
-      font-size: 14px;
+      font-size: .95rem;
+      margin-bottom: 30px;
     }
 
-    .benefits {
+    .benefit-list {
       list-style: none;
-      margin: 24px 0;
+      display: grid;
+      gap: 17px;
+      margin-bottom: 32px;
     }
 
-    .benefits li {
-      margin: 9px 0;
-      font-size: 13px;
+    .benefit-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 13px;
+      font-size: .9rem;
     }
 
-    .benefits li::before {
-      content: "✓";
+    .check {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      width: 23px;
+      height: 23px;
       color: var(--accent);
-      margin-right: 10px;
-      font-weight: bold;
+      border: 1px solid rgba(199,243,107,.4);
+      border-radius: 50%;
+      font-size: .75rem;
     }
 
-    .contact {
-      background: var(--accent);
-      color: #11130c;
+    /* PROCESS */
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border: 1px solid var(--line);
     }
+
+    .process-card {
+      padding: 34px;
+      border-right: 1px solid var(--line);
+    }
+
+    .process-card:last-child {
+      border-right: 0;
+    }
+
+    .process-index {
+      display: block;
+      margin-bottom: 48px;
+      color: var(--accent);
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 2.4rem;
+    }
+
+    .process-card h3 {
+      margin-bottom: 15px;
+    }
+
+    .process-card p {
+      color: var(--muted);
+      font-size: .88rem;
+    }
+
+    /* GALLERY */
+
+    .gallery {
+      background: var(--bg-soft);
+      border-block: 1px solid var(--line);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr .8fr;
+      grid-template-rows: 230px 230px;
+      gap: 14px;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      background: var(--panel);
+    }
+
+    .gallery-item:first-child {
+      grid-row: span 2;
+    }
+
+    .gallery-item img {
+      height: 100%;
+      transition: transform 600ms ease, opacity var(--transition);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.055);
+      opacity: .78;
+    }
+
+    .gallery-label {
+      position: absolute;
+      bottom: 16px;
+      left: 16px;
+      padding: 8px 11px;
+      background: rgba(16,17,15,.83);
+      border: 1px solid var(--line);
+      font-size: .7rem;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    /* CTA */
+
+    .cta-section {
+      padding: 95px 0;
+    }
+
+    .cta-panel {
+      position: relative;
+      padding: 75px 50px;
+      overflow: hidden;
+      border: 1px solid rgba(199,243,107,.28);
+      border-radius: var(--radius);
+      background:
+        radial-gradient(ellipse at 100% 0%, rgba(199,243,107,.13), transparent 45%),
+        var(--panel);
+    }
+
+    .cta-panel h2 {
+      max-width: 750px;
+      margin: 20px 0;
+    }
+
+    .cta-panel p {
+      max-width: 550px;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    /* CONTACT */
 
     .contact-grid {
       display: grid;
-      grid-template-columns: 0.8fr 1.2fr;
-      gap: 45px;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 65px;
     }
 
-    .contact .eyebrow {
-      color: #343c20;
-    }
-
-    .contact h2 {
-      font-size: clamp(38px, 6vw, 60px);
-      line-height: 1;
+    .contact-copy h2 {
       margin: 18px 0;
-      letter-spacing: -3px;
     }
 
-    .contact-copy p {
-      max-width: 350px;
-      font-size: 14px;
+    .contact-copy > p {
+      color: var(--muted);
+      margin-bottom: 32px;
     }
 
-    form {
+    .contact-detail {
+      padding: 19px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .contact-detail small {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: .7rem;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+
+    .contact-detail strong {
+      font-weight: 600;
+      font-size: .95rem;
+    }
+
+    .contact-form {
+      padding: 32px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+
+    .form-heading {
+      margin-bottom: 25px;
+    }
+
+    .form-heading h3 {
+      margin-bottom: 9px;
+    }
+
+    .form-heading p {
+      color: var(--muted);
+      font-size: .83rem;
+    }
+
+    .form-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 13px;
+      gap: 18px;
     }
 
     .field {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 8px;
     }
 
-    .full {
+    .field.full {
       grid-column: 1 / -1;
     }
 
-    label {
-      font-size: 11px;
-      font-weight: bold;
+    .field label {
+      color: #d6d7d0;
+      font-size: .78rem;
+      font-weight: 600;
     }
 
-    input, select, textarea {
+    .field input,
+    .field select,
+    .field textarea {
       width: 100%;
-      padding: 13px;
-      border: 1px solid rgba(0,0,0,.2);
-      background: rgba(255,255,255,.65);
-      color: #111;
-      font: inherit;
-      font-size: 13px;
-      border-radius: 0;
+      min-height: 49px;
+      padding: 12px 14px;
+      color: var(--text);
+      background: #131411;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 4px;
+      outline: none;
+      transition: border-color var(--transition);
     }
 
-    textarea {
-      min-height: 85px;
+    .field textarea {
+      min-height: 115px;
       resize: vertical;
     }
 
-    .submit {
-      grid-column: 1 / -1;
-      background: #11130c;
-      color: white;
-      border: 0;
-      padding: 15px;
-      font-weight: bold;
-      cursor: pointer;
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--accent);
     }
 
-    .submit:hover {
-      background: #303622;
+    .field select option {
+      background: #171815;
     }
 
-    .notice {
-      display: none;
-      margin-top: 12px;
-      font-size: 13px;
-      font-weight: bold;
-    }
-
-    footer {
-      padding: 25px 0;
+    .form-note {
+      margin-top: 15px;
       color: var(--muted);
-      font-size: 12px;
+      font-size: .72rem;
     }
 
-    .footer-content {
+    .form-status {
+      min-height: 24px;
+      margin-top: 12px;
+      color: var(--accent);
+      font-size: .82rem;
+    }
+
+    .contact-form .btn {
+      width: 100%;
+      margin-top: 18px;
+    }
+
+    /* FAQ */
+
+    .faq-list {
+      max-width: 850px;
+      margin-inline: auto;
+      border-top: 1px solid var(--line);
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .faq-item summary {
+      position: relative;
+      padding: 23px 42px 23px 0;
+      list-style: none;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item summary::after {
+      content: "+";
+      position: absolute;
+      right: 4px;
+      top: 16px;
+      color: var(--accent);
+      font-size: 1.6rem;
+      font-weight: 400;
+    }
+
+    .faq-item[open] summary::after {
+      content: "−";
+    }
+
+    .faq-item p {
+      max-width: 750px;
+      padding: 0 20px 23px 0;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    /* FOOTER */
+
+    .footer {
+      padding: 42px 0 25px;
+      background: #0b0c0a;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-main {
       display: flex;
       justify-content: space-between;
-      gap: 15px;
+      align-items: center;
+      gap: 30px;
+      padding-bottom: 35px;
+    }
+
+    .footer-copy {
+      max-width: 340px;
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: .8rem;
+    }
+
+    .footer-links {
+      display: flex;
       flex-wrap: wrap;
+      gap: 22px;
+      color: #c7c8c0;
+      font-size: .8rem;
     }
 
-    @media (max-width: 800px) {
-      .hero-car {
-        width: 70%;
-        right: -10%;
-        bottom: 8%;
-        opacity: 0.35;
-      }
+    .footer-links a:hover {
+      color: var(--accent);
+    }
 
-      .hero-content {
-        padding: 75px 0 220px;
-      }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .72rem;
+    }
 
-      .services {
-        grid-template-columns: 1fr 1fr;
-      }
+    /* WHATSAPP FLOAT */
 
-      .about-grid, .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
+    .whatsapp-float {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 900;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 17px;
+      color: #10110f;
+      background: var(--accent);
+      border-radius: 999px;
+      box-shadow: 0 8px 35px rgba(0,0,0,.35);
+      font-size: .8rem;
+      font-weight: 700;
+      transition: transform var(--transition);
+    }
+
+    .whatsapp-float:hover {
+      transform: translateY(-3px);
+    }
+
+    /* ANIMATIONS */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 650ms ease, transform 650ms ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes heroZoom {
+      from { transform: scale(1.04); }
+      to { transform: scale(1); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+      .reveal {
+        opacity: 1;
+        transform: none;
       }
     }
 
-    @media (max-width: 540px) {
-      nav {
-        align-items: flex-start;
-        flex-direction: column;
-        padding: 18px 0;
+    /* RESPONSIVE */
+
+    @media (max-width: 980px) {
+      .nav-links { gap: 16px; }
+      .nav-links a { font-size: .75rem; }
+      .nav-cta { display: none; }
+
+      .philosophy-grid {
+        gap: 38px;
+      }
+
+      .philosophy-image {
+        min-height: 460px;
+      }
+
+      .contact-grid {
+        gap: 35px;
+      }
+
+      .service-card {
+        min-height: 340px;
+        padding: 22px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .container {
+        width: min(100% - 36px, var(--container));
+      }
+
+      .section {
+        padding: 78px 0;
+      }
+
+      .nav {
+        min-height: 70px;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
       }
 
       .nav-links {
-        flex-wrap: wrap;
-        gap: 14px;
+        position: fixed;
+        inset: 70px 0 0;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 20px 24px 35px;
+        background: rgba(16,17,15,.98);
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(-8px);
+        transition: opacity var(--transition), transform var(--transition), visibility var(--transition);
       }
 
-      h1 {
-        letter-spacing: -2px;
+      .nav-links.open {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
       }
 
-      .services {
+      .nav-links li {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 19px 0;
+        font-size: 1rem;
+      }
+
+      .hero {
+        min-height: 690px;
+        min-height: min(760px, calc(100svh - 70px));
+      }
+
+      .hero::before {
+        background-position: 60% center;
+      }
+
+      .hero::after {
+        background:
+          linear-gradient(90deg, rgba(10,11,9,.88), rgba(10,11,9,.35)),
+          linear-gradient(0deg, rgba(10,11,9,.9), transparent 75%);
+      }
+
+      .hero-content {
+        padding: 90px 0 125px;
+      }
+
+      .hero-copy {
+        max-width: 420px;
+      }
+
+      .hero-bottom {
+        bottom: 17px;
+        font-size: .59rem;
+        letter-spacing: .04em;
+      }
+
+      .section-heading {
+        display: block;
+        margin-bottom: 32px;
+      }
+
+      .section-heading > p {
+        margin-top: 18px;
+      }
+
+      .intro-item {
+        padding: 22px 8px;
+      }
+
+      .intro-item strong {
+        font-size: 1.15rem;
+      }
+
+      .intro-item span {
+        font-size: .67rem;
+      }
+
+      .services-grid {
         grid-template-columns: 1fr;
       }
 
-      .stats {
+      .service-card {
+        min-height: 320px;
+      }
+
+      .philosophy-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .philosophy-image {
+        min-height: 390px;
+      }
+
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .process-card {
+        padding: 28px;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .process-card:last-child {
+        border-bottom: 0;
+      }
+
+      .process-index {
+        margin-bottom: 25px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 260px 180px 180px;
+      }
+
+      .gallery-item:first-child {
+        grid-column: 1 / -1;
+        grid-row: auto;
+      }
+
+      .cta-panel {
+        padding: 50px 25px;
+      }
+
+      .contact-form {
+        padding: 24px 18px;
+      }
+
+      .footer-main,
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .whatsapp-float {
+        right: 14px;
+        bottom: 14px;
+        padding: 12px 15px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      h1 {
+        font-size: 3.4rem;
+      }
+
+      .hero-actions {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .hero-bottom span:last-child {
+        display: none;
+      }
+
+      .intro-item strong {
+        font-size: 1rem;
+      }
+
+      .gallery-grid {
+        grid-template-rows: 220px 150px 150px;
         gap: 8px;
       }
 
-      .stat strong {
-        font-size: 18px;
+      .gallery-label {
+        left: 8px;
+        bottom: 8px;
+        font-size: .6rem;
       }
 
-      .stat span {
-        font-size: 10px;
-      }
-
-      form {
+      .form-grid {
         grid-template-columns: 1fr;
       }
 
-      .full, .submit {
+      .field.full {
         grid-column: auto;
-      }
-
-      section {
-        padding: 65px 0;
       }
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <nav class="container">
-      <a class="logo" href="#home">NOIR<span>.</span><small>AUTO STUDIO</small></a>
+  <!--
+    YAYINA ALMADAN ÖNCE:
+    1. 905XXXXXXXXX değerini gerçek WhatsApp numarasıyla değiştir.
+    2. İşletme adı, adresi, çalışma saatleri ve hizmetleri doğrula.
+    3. Görsellerin işletmeyi gerçekten temsil ettiğinden emin ol.
+    4. Bu dosya tek başına form verilerini bir sunucuya kaydetmez.
+  -->
 
-      <div class="nav-links">
-        <a href="#services">Hizmetler</a>
-        <a href="#about">Hakkımızda</a>
-        <a href="#contact">İletişim</a>
-        <a class="button" href="#contact">RANDEVU AL ↗</a>
-      </div>
+  <header class="header">
+    <nav class="nav container" aria-label="Ana menü">
+      <a class="logo" href="#anasayfa" aria-label="NOIR AUTO STUDIO ana sayfa">
+        <strong>NOIR</strong>
+        <small>AUTO STUDIO</small>
+      </a>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="Menüyü aç"
+        aria-expanded="false"
+        aria-controls="nav-links"
+      >☰</button>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#hizmetler">Hizmetler</a></li>
+        <li><a href="#hakkimizda">Yaklaşımımız</a></li>
+        <li><a href="#surec">Süreç</a></li>
+        <li><a href="#galeri">Galeri</a></li>
+        <li><a href="#sss">SSS</a></li>
+        <li><a href="#iletisim">İletişim</a></li>
+      </ul>
+
+      <a class="btn btn-primary nav-cta" href="#iletisim">
+        Teklif Al <span class="btn-arrow">↗</span>
+      </a>
     </nav>
   </header>
 
   <main>
-    <section class="hero" id="home">
+    <!-- HERO -->
+    <section class="hero" id="anasayfa">
       <div class="container">
         <div class="hero-content">
-          <div class="eyebrow">Otomobil bakımında yeni standart</div>
-          <h1>DETAYDA<br><span>FARK.</span></h1>
-          <p>
-            Otomobiline hak ettiği özeni göster.
-            Profesyonel detaylı temizlik ve boya koruma
-            yaklaşımıyla her ayrıntıda fark yarat.
+          <span class="eyebrow">Premium Automotive Care</span>
+
+          <h1>
+            DETAYLARDA<br>
+            <span class="accent">MÜKEMMELLİK.</span>
+          </h1>
+
+          <p class="hero-copy">
+            Aracınız yalnızca bir ulaşım aracı değil.
+            Profesyonel bakım ve özenli uygulamalarla
+            onun karakterini yeniden ortaya çıkarın.
           </p>
-          <div class="hero-buttons">
-            <a class="button" href="#services">HİZMETLERİ KEŞFET ↗</a>
-            <a class="button-outline" href="#contact">BİZE ULAŞ</a>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#iletisim">
+              Aracınıza Özel Teklif Al <span class="btn-arrow">↗</span>
+            </a>
+            <a class="btn btn-outline" href="#hizmetler">
+              Hizmetleri Keşfet
+            </a>
           </div>
         </div>
       </div>
 
-      <div class="hero-car" aria-hidden="true">
-        <div class="car-body"></div>
-        <div class="car-window"></div>
-        <div class="wheel wheel-left"></div>
-        <div class="wheel wheel-right"></div>
+      <div class="container hero-bottom">
+        <span><i class="status-dot"></i> Detay Odaklı Bakım</span>
+        <span>Precision · Care · Finish</span>
       </div>
     </section>
 
-    <div class="container stats">
-      <div class="stat"><strong>01</strong><span>Özenli uygulama</span></div>
-      <div class="stat"><strong>02</strong><span>Aracına özel yaklaşım</span></div>
-      <div class="stat"><strong>03</strong><span>Detay odaklı bakım</span></div>
-    </div>
+    <!-- BRAND VALUES -->
+    <section class="intro-strip" aria-label="Hizmet yaklaşımımız">
+      <div class="intro-item">
+        <strong>Özenli İşçilik</strong>
+        <span>Her ayrıntıya dikkat</span>
+      </div>
+      <div class="intro-item">
+        <strong>Araca Özel Yaklaşım</strong>
+        <span>İhtiyaca uygun uygulama</span>
+      </div>
+      <div class="intro-item">
+        <strong>Şeffaf İletişim</strong>
+        <span>İşlem öncesi net bilgi</span>
+      </div>
+    </section>
 
-    <section id="services">
+    <!-- SERVICES -->
+    <section class="section" id="hizmetler">
       <div class="container">
-        <div class="section-heading">
-          <div class="eyebrow">Hizmetlerimiz</div>
-          <h2>BAKIMIN İYİ HALİ.</h2>
-          <p>Aracının ihtiyaçlarına uygun bakım seçeneğini birlikte belirleyelim.</p>
+        <div class="section-heading reveal">
+          <div>
+            <span class="eyebrow">Hizmetlerimiz</span>
+            <h2>ARACINIZA<br><span class="accent">ÖZEL BAKIM.</span></h2>
+          </div>
+          <p>
+            Her aracın ihtiyacı farklıdır. Uygun hizmeti belirlemek
+            ve fiyat teklifi almak için bizimle iletişime geçin.
+          </p>
         </div>
 
-        <div class="services">
-          <article class="service">
-            <div class="service-number">01 / KORUMA</div>
-            <div class="service-icon">✳</div>
+        <div class="services-grid">
+          <article class="service-card reveal"
+            style="--service-image:url('https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=1000&q=80')">
+            <span class="service-number">01 / DETAILING</span>
+            <h3>Detaylı Temizlik</h3>
+            <p>
+              Araç içi ve dışı için özenli temizlik.
+              Uygulama kapsamı aracın durumuna göre belirlenir.
+            </p>
+            <a class="service-link" href="#iletisim" data-service="Detaylı Temizlik">
+              Teklif iste <span>↗</span>
+            </a>
+          </article>
+
+          <article class="service-card reveal"
+            style="--service-image:url('https://images.unsplash.com/photo-1632823471565-1ecdf5c5e6c4?auto=format&fit=crop&w=1000&q=80')">
+            <span class="service-number">02 / PAINT CARE</span>
+            <h3>Boya Düzeltme</h3>
+            <p>
+              Boya yüzeyinin durumuna uygun değerlendirme
+              ve profesyonel polisaj uygulamaları.
+            </p>
+            <a class="service-link" href="#iletisim" data-service="Boya Düzeltme">
+              Teklif iste <span>↗</span>
+            </a>
+          </article>
+
+          <article class="service-card reveal"
+            style="--service-image:url('https://images.unsplash.com/photo-1507136566006-cfc505b114fc?auto=format&fit=crop&w=1000&q=80')">
+            <span class="service-number">03 / PROTECTION</span>
             <h3>Boya Koruma</h3>
-            <p>Aracının dış yüzeyini korumaya ve parlak görünümünü desteklemeye yönelik uygulamalar.</p>
-            <a href="#contact">BİLGİ AL ↗</a>
-          </article>
-
-          <article class="service">
-            <div class="service-number">02 / TEMİZLİK</div>
-            <div class="service-icon">◈</div>
-            <h3>Detaylı İç Temizlik</h3>
-            <p>Kabin, koltuklar ve ulaşılması zor alanlar için özenli iç temizlik hizmeti.</p>
-            <a href="#contact">BİLGİ AL ↗</a>
-          </article>
-
-          <article class="service">
-            <div class="service-number">03 / YENİLEME</div>
-            <div class="service-icon">✧</div>
-            <h3>İç ve Dış Bakım</h3>
-            <p>Aracının genel görünümünü tazelemeye yönelik kapsamlı bakım seçenekleri.</p>
-            <a href="#contact">BİLGİ AL ↗</a>
+            <p>
+              Aracınıza ve kullanım alışkanlıklarınıza uygun
+              koruma seçeneklerinin değerlendirilmesi.
+            </p>
+            <a class="service-link" href="#iletisim" data-service="Boya Koruma">
+              Teklif iste <span>↗</span>
+            </a>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="about" id="about">
-      <div class="container about-grid">
-        <div class="about-visual">
+    <!-- ABOUT / PHILOSOPHY -->
+    <section class="section philosophy" id="hakkimizda">
+      <div class="container philosophy-grid">
+        <div class="philosophy-image reveal">
+          <img
+            src="https://images.unsplash.com/photo-1613214150384-3c0e2b2b6f30?auto=format&fit=crop&w=1200&q=85"
+            alt="Profesyonel bakım için hazırlanmış otomobil"
+            loading="lazy"
+          >
+          <span class="image-caption">Detailing is a craft.</span>
+        </div>
+
+        <div class="philosophy-copy reveal">
+          <span class="eyebrow">NOIR yaklaşımı</span>
+          <h2>SADECE TEMİZLİK DEĞİL.<br><span class="accent">BİR STANDART.</span></h2>
+
+          <p>
+            NOIR AUTO STUDIO'nun yaklaşımı; doğru uygulamayı,
+            özenli işçiliği ve açık iletişimi bir araya getirmektir.
+            Amacımız, her araç için ihtiyaca uygun bir bakım deneyimi sunmaktır.
+          </p>
+
+          <ul class="benefit-list">
+            <li><span class="check">✓</span><span>Uygulama öncesi ihtiyaç ve yüzey değerlendirmesi</span></li>
+            <li><span class="check">✓</span><span>Araca ve hizmete uygun yöntem seçimi</span></li>
+            <li><span class="check">✓</span><span>İşlem kapsamı ve teklif konusunda açık iletişim</span></li>
+            <li><span class="check">✓</span><span>Bakım sonrasında kullanım önerileri</span></li>
+          </ul>
+
+          <a class="btn btn-outline" href="#iletisim">
+            Bize Ulaşın <span class="btn-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="section" id="surec">
+      <div class="container">
+        <div class="section-heading reveal">
           <div>
-            <strong>N<span style="color:var(--accent)">.</span></strong>
-            <span>DETAIL IS EVERYTHING</span>
+            <span class="eyebrow">Nasıl Çalışıyoruz?</span>
+            <h2>ÜÇ ADIMDA<br><span class="accent">DOĞRU ÇÖZÜM.</span></h2>
+          </div>
+          <p>
+            İhtiyacınızı anlatın, aracınıza uygun seçenekleri değerlendirelim
+            ve uygulama planını birlikte netleştirelim.
+          </p>
+        </div>
+
+        <div class="process-grid reveal">
+          <article class="process-card">
+            <span class="process-index">01</span>
+            <h3>İhtiyacı Anlayalım</h3>
+            <p>
+              Aracınızın modelini, mevcut durumunu ve beklentinizi öğrenelim.
+            </p>
+          </article>
+
+          <article class="process-card">
+            <span class="process-index">02</span>
+            <h3>Teklifi Netleştirelim</h3>
+            <p>
+              Uygun hizmeti, işlem kapsamını ve fiyat teklifini görüşelim.
+            </p>
+          </article>
+
+          <article class="process-card">
+            <span class="process-index">03</span>
+            <h3>Planlayalım</h3>
+            <p>
+              Uygunluk durumuna göre randevu zamanını ve sonraki adımları belirleyelim.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="section gallery" id="galeri">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <span class="eyebrow">Görsel Dünya</span>
+            <h2>OTOMOTİVİN<br><span class="accent">ESTETİĞİ.</span></h2>
+          </div>
+          <p>
+            Bu galeri tasarım örnekleri içerir. Yayına almadan önce
+            gerçek işletme çalışmalarınızın fotoğraflarıyla değiştirin.
+          </p>
+        </div>
+
+        <div class="gallery-grid reveal">
+          <figure class="gallery-item">
+            <img
+              src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1100&q=85"
+              alt="Otomobil dış görünümü"
+              loading="lazy"
+            >
+            <figcaption class="gallery-label">Automotive Design</figcaption>
+          </figure>
+
+          <figure class="gallery-item">
+            <img
+              src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80"
+              alt="Spor otomobil"
+              loading="lazy"
+            >
+            <figcaption class="gallery-label">Performance</figcaption>
+          </figure>
+
+          <figure class="gallery-item">
+            <img
+              src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=800&q=80"
+              alt="Otomobil detayları"
+              loading="lazy"
+            >
+            <figcaption class="gallery-label">Details</figcaption>
+          </figure>
+
+          <figure class="gallery-item">
+            <img
+              src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=800&q=80"
+              alt="Spor otomobil tasarımı"
+              loading="lazy"
+            >
+            <figcaption class="gallery-label">Craftsmanship</figcaption>
+          </figure>
+
+          <figure class="gallery-item">
+            <img
+              src="https://images.unsplash.com/photo-1614200187524-dc4b892acf16?auto=format&fit=crop&w=800&q=80"
+              alt="Otomobil gövde detayları"
+              loading="lazy"
+            >
+            <figcaption class="gallery-label">Precision</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-panel reveal">
+          <span class="eyebrow">Your Car. Your Standard.</span>
+          <h2>ARACINIZ İÇİN<br><span class="accent">DOĞRU BAKIMI</span><br>BİRLİKTE SEÇELİM.</h2>
+          <p>
+            Aracınızın modelini ve ihtiyaçlarınızı paylaşın.
+            Size uygun hizmet ve fiyat teklifi için iletişime geçin.
+          </p>
+          <a class="btn btn-primary" href="#iletisim">
+            Teklif Talep Et <span class="btn-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="iletisim">
+      <div class="container contact-grid">
+        <div class="contact-copy reveal">
+          <span class="eyebrow">İletişim</span>
+          <h2>İLK ADIMI<br><span class="accent">ATALIM.</span></h2>
+          <p>
+            Aşağıdaki formu doldurun. Bilgileriniz WhatsApp mesajına
+            dönüştürülür; mesajı göndermeden önce kontrol edebilirsiniz.
+          </p>
+
+          <div class="contact-detail">
+            <small>WhatsApp</small>
+            <strong>Hızlı iletişim ve teklif talebi</strong>
+          </div>
+
+          <div class="contact-detail">
+            <small>Çalışma saatleri</small>
+            <strong>İşletme tarafından güncellenecek</strong>
+          </div>
+
+          <div class="contact-detail">
+            <small>Adres</small>
+            <strong>İşletme adresini buraya ekleyin</strong>
           </div>
         </div>
 
-        <div class="about-text">
-          <div class="eyebrow">NOIR yaklaşımı</div>
-          <h2>HER DETAYIN<br>BİR SEBEBİ VAR.</h2>
-          <p>
-            İyi araç bakımı yalnızca temizlikten ibaret değildir.
-            Doğru uygulama, dikkatli çalışma ve ihtiyaca uygun
-            bir planlama ile başlar.
-          </p>
-          <p>
-            NOIR Auto Studio, profesyonel araç bakım hizmetleri
-            için hazırlanmış örnek bir işletme web sitesi konseptidir.
-          </p>
-          <ul class="benefits">
-            <li>İhtiyaca özel yaklaşım</li>
-            <li>Açık hizmet seçenekleri</li>
-            <li>Detay odaklı çalışma</li>
-            <li>Özenli teslim süreci</li>
-          </ul>
-          <a class="button" href="#contact">BİZİMLE GÖRÜŞ ↗</a>
-        </div>
-      </div>
-    </section>
+        <form class="contact-form reveal" id="contact-form">
+          <div class="form-heading">
+            <h3>Teklif Talep Formu</h3>
+            <p>Aracınızla ilgili birkaç bilgi yeterli.</p>
+          </div>
 
-    <section id="contact" class="contact">
-      <div class="container contact-grid">
-        <div class="contact-copy">
-          <div class="eyebrow">İlk adımı at</div>
-          <h2>ARACIN<br>HAZIR MI?</h2>
-          <p>
-            İlgilendiğin hizmeti seç ve bilgilerini doldur.
-            Bu demo form yalnızca örnek olarak çalışır;
-            gerçek mesaj gönderimi için ayrıca bağlanması gerekir.
-          </p>
-        </div>
-
-        <div>
-          <form id="contactForm">
+          <div class="form-grid">
             <div class="field">
-              <label for="name">ADIN</label>
-              <input id="name" name="name" placeholder="Adın soyadın" required>
+              <label for="name">Adınız *</label>
+              <input id="name" name="name" type="text" autocomplete="name" required maxlength="80" placeholder="Adınız">
             </div>
 
             <div class="field">
-              <label for="phone">TELEFON</label>
-              <input id="phone" name="phone" type="tel" placeholder="Telefon numaran" required>
+              <label for="phone">Telefon numaranız *</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" required maxlength="25" placeholder="05XX XXX XX XX">
             </div>
 
             <div class="field">
-              <label for="car">ARAÇ</label>
-              <input id="car" name="car" placeholder="Marka ve model">
+              <label for="vehicle">Araç marka / model *</label>
+              <input id="vehicle" name="vehicle" type="text" required maxlength="100" placeholder="Örn. BMW 320i">
             </div>
 
             <div class="field">
-              <label for="service">HİZMET</label>
-              <select id="service" name="service">
-                <option>Boya koruma</option>
-                <option>Detaylı iç temizlik</option>
-                <option>İç ve dış bakım</option>
-                <option>Bilgi almak istiyorum</option>
+              <label for="service">İlgilendiğiniz hizmet *</label>
+              <select id="service" name="service" required>
+                <option value="">Hizmet seçin</option>
+                <option value="Detaylı Temizlik">Detaylı Temizlik</option>
+                <option value="Boya Düzeltme">Boya Düzeltme</option>
+                <option value="Boya Koruma">Boya Koruma</option>
+                <option value="Birden Fazla Hizmet">Birden Fazla Hizmet</option>
+                <option value="Kararsızım / Danışmak İstiyorum">Kararsızım / Danışmak İstiyorum</option>
               </select>
             </div>
 
             <div class="field full">
-              <label for="message">MESAJIN</label>
-              <textarea id="message" name="message" placeholder="İhtiyacını kısaca anlat..."></textarea>
+              <label for="message">Eklemek istediğiniz bilgiler</label>
+              <textarea id="message" name="message" maxlength="1000" placeholder="Aracınızın durumu, beklentiniz veya uygun olduğunuz zaman..."></textarea>
             </div>
+          </div>
 
-            <button class="submit" type="submit">FORMU KONTROL ET ↗</button>
-          </form>
-
-          <p class="notice" id="notice" role="status">
-            Demo form çalışıyor. Bilgiler herhangi bir yere gönderilmedi.
+          <p class="form-note">
+            Bu form bilgileri sunucuya kaydetmez. Devam ettiğinizde WhatsApp
+            açılır ve mesajı kendiniz göndermeyi onaylarsınız.
           </p>
+
+          <button class="btn btn-primary" type="submit">
+            WhatsApp ile Teklif İste <span class="btn-arrow">↗</span>
+          </button>
+
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section philosophy" id="sss">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <span class="eyebrow">Sık Sorulan Sorular</span>
+            <h2>MERAK ETTİKLERİNİZ.</h2>
+          </div>
+          <p>
+            Hizmetin kapsamı ve fiyatı, aracınızın durumuna ve seçilen
+            uygulamaya göre değişebilir.
+          </p>
+        </div>
+
+        <div class="faq-list reveal">
+          <details class="faq-item">
+            <summary>Fiyat teklifi nasıl alabilirim?</summary>
+            <p>
+              İletişim formunu doldurarak aracınızın bilgilerini ve
+              istediğiniz hizmeti iletebilirsiniz. Teklif, işletme tarafından
+              değerlendirme sonrasında paylaşılmalıdır.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>İşlem ne kadar sürer?</summary>
+            <p>
+              Süre, aracın durumuna ve yapılacak işlemlere göre değişir.
+              Randevu öncesinde tahmini süreyi işletmeyle netleştirin.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Aracıma hangi hizmetin uygun olduğunu nasıl anlarım?</summary>
+            <p>
+              Aracınızın mevcut durumunu ve beklentinizi paylaşın.
+              Uygun seçeneklerin, işlem kapsamının ve varsa sınırlamaların
+              uygulama öncesinde açıklanmasını isteyin.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Randevuyu nasıl planlayabilirim?</summary>
+            <p>
+              WhatsApp üzerinden iletişim kurarak uygun gün ve saatleri
+              görüşebilirsiniz. Randevu, işletme tarafından onaylandığında
+              kesinleşir.
+            </p>
+          </details>
         </div>
       </div>
     </section>
   </main>
 
-  <footer>
-    <div class="container footer-content">
-      <a class="logo" href="#home">NOIR<span>.</span><small>AUTO STUDIO</small></a>
-      <p>© <span id="year"></span> NOIR Auto Studio · Demo web sitesi</p>
-      <a href="#home">Yukarı çık ↑</a>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-main">
+        <div>
+          <a class="logo" href="#anasayfa">
+            <strong>NOIR</strong>
+            <small>AUTO STUDIO</small>
+          </a>
+          <p class="footer-copy">
+            Otomotiv bakımında detaylara, işçiliğe ve doğru iletişime odaklanan
+            premium marka deneyimi.
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <a href="#hizmetler">Hizmetler</a>
+          <a href="#hakkimizda">Yaklaşımımız</a>
+          <a href="#galeri">Galeri</a>
+          <a href="#iletisim">İletişim</a>
+          <a href="#sss">SSS</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> NOIR AUTO STUDIO. Tüm hakları saklıdır.</span>
+        <a href="#anasayfa">Başa dön ↑</a>
+      </div>
     </div>
   </footer>
 
-  <script>
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
+  <!-- WHATSAPP FLOATING BUTTON -->
+  <a
+    class="whatsapp-float"
+    id="whatsapp-link"
+    href="https://wa.me/905323021178"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="WhatsApp üzerinden iletişim kur"
+  >
+    <span aria-hidden="true">◉</span> WhatsApp
+  </a>
 
-    document.getElementById("contactForm").addEventListener("submit", function(event) {
+  <script>
+    /*
+      ÖNEMLİ:
+      Aşağıdaki numara örnektir.
+      90 ülke kodu + alan kodu/operatör + numara şeklinde,
+      yalnızca rakamlardan oluşan işletme numarasını girin.
+      Örnek biçim: 905XXXXXXXXX
+    */
+    const WHATSAPP_NUMBER = "905XXXXXXXXX";
+
+    // Footer yılı
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Mobil menü
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    function closeMenu() {
+      navLinks.classList.remove("open");
+      document.body.classList.remove("menu-open");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Menüyü aç");
+      menuToggle.textContent = "☰";
+    }
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+
+      document.body.classList.toggle("menu-open", isOpen);
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute("aria-label", isOpen ? "Menüyü kapat" : "Menüyü aç");
+      menuToggle.textContent = isOpen ? "×" : "☰";
+    });
+
+    navLinks.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") closeMenu();
+    });
+
+    // Kaydırma animasyonları
+    const revealItems = document.querySelectorAll(".reveal");
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries, currentObserver) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            currentObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      revealItems.forEach(item => observer.observe(item));
+    } else {
+      revealItems.forEach(item => item.classList.add("visible"));
+    }
+
+    // Hizmet kartından forma hizmet aktar
+    document.querySelectorAll("[data-service]").forEach(link => {
+      link.addEventListener("click", () => {
+        const serviceSelect = document.getElementById("service");
+        serviceSelect.value = link.dataset.service;
+      });
+    });
+
+    // WhatsApp bağlantısı oluşturma
+    function openWhatsApp(message) {
+      if (!/^90\d{10}$/.test(WHATSAPP_NUMBER)) {
+        const status = document.getElementById("form-status");
+        status.textContent =
+          "WhatsApp numarası henüz ayarlanmamış. İşletmenin gerçek numarasını koda ekleyin.";
+        return;
+      }
+
+      const url = "https://wa.me/" + WHATSAPP_NUMBER +
+        "?text=" + encodeURIComponent(message);
+
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+
+    // Yüzen WhatsApp butonu
+    const whatsappLink = document.getElementById("whatsapp-link");
+
+    whatsappLink.addEventListener("click", event => {
       event.preventDefault();
-      document.getElementById("notice").style.display = "block";
+
+      openWhatsApp(
+        "Merhaba, NOIR AUTO STUDIO hizmetleri hakkında bilgi ve teklif almak istiyorum."
+      );
+    });
+
+    // Form kontrolü ve WhatsApp mesajı
+    const form = document.getElementById("contact-form");
+    const formStatus = document.getElementById("form-status");
+
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+      formStatus.textContent = "";
+
+      if (!form.reportValidity()) return;
+
+      const name = document.getElementById("name").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const vehicle = document.getElementById("vehicle").value.trim();
+      const service = document.getElementById("service").value;
+      const extra = document.getElementById("message").value.trim();
+
+      if (!name || !phone || !vehicle || !service) {
+        formStatus.textContent = "Lütfen zorunlu alanları doldurun.";
+        return;
+      }
+
+      const message = [
+        "Merhaba, NOIR AUTO STUDIO'dan teklif almak istiyorum.",
+        "",
+        "Ad: " + name,
+        "Telefon: " + phone,
+        "Araç: " + vehicle,
+        "İstenen hizmet: " + service,
+        extra ? "Ek bilgiler: " + extra : ""
+      ].filter(Boolean).join("\n");
+
+      openWhatsApp(message);
     });
   </script>
 </body>
